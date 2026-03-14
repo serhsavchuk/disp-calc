@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cubic Displacement Calculator</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="./icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./icon/favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
+    <style>
+        :root {
+            --primary-color: #000;
+            --primary-background: #fff;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary-color: #fff;
+                --primary-background: #121212;
+            }
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--primary-color);
+            background-color: var(--primary-background);
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        main>section {
+            max-width: 500px;
+        }
+
+        label {
+            display: inline-block;
+            padding-bottom: 5px;
+            font-size: 14px;
+        }
+
+        h5 {
+            text-align: center;
+        }
+
+        input {
+            border-radius: 3px;
+            border-color: var(--primary-color);
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+        }
+
+        .buttons .button {
+            margin-bottom: 10px;
+        }
+
+        .button {
+            background-color: white;
+            border: 2px solid transparent;
+            color: black;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .button.btn-calc {
+            border: 2px solid #008CBA;
+        }
+
+        .button.btn-calc:hover {
+            background-color: #008CBA;
+            color: white;
+        }
+
+        .button.btn-reset {
+            border: 2px solid #f44336;
+        }
+
+        .button.btn-reset:hover {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header></header>
+    <main>
+        <section>
+            <h5>
+                Use the form below to calculate the cubic inch displacement of a pump by
+                measuring its internal parts. To find the dimensions below, you must take
+                apart the gear pump to take some internal measurements. Once you've
+                completed the measurements, simply enter them in the appropriate boxes below
+                and click "Calculate" to determine the cubic inch displacement! Make all
+                measurements as accurately as possible in inches.
+            </h5>
+            <form name="form1">
+                <table cellspacing="0" border="1">
+                    <tbody>
+                        <tr>
+                            <td height="223" width="250" valign="top">
+                                <div align="center">
+                                    <p><br>
+                                        <label size="2" for="w"><strong>Gear Width (W)<br></strong></label>
+                                        <input id="w" name="w" type="number" /><br><br>
+                                        <label size="2" for="d"><strong>Gear Bore Diameter (D)<br></strong>
+                                        </label>
+                                        <input id="d" name="d" type="number" /><br><br>
+                                        <label size="2" for="l"><strong>Bore to Bore Length (L)<br></strong>
+                                        </label>
+                                        <input id="l" name="l" type="number" /><br><br>
+                                        <label><i>All measurements should be<br>made in inches.</i><br>
+                                        </label>
+                                    </p>
+                                </div>
+                            </td>
+                            <td height="223" width="99">
+                                <div class="buttons">
+                                    <button type="button" onclick="calc()" value="Calculate" class="button btn-calc">
+                                        Calculate
+                                    </button>
+                                    <button type="reset" value="Reset" name="reset" class="button btn-reset">
+                                        Reset
+                                    </button>
+                                </div>
+                            </td>
+                            <td height="223" width="181" valign="top">
+                                <div align="center">
+                                    <p><br>
+                                        <label for="total" size="2"><strong>Displacement</strong><br><br>(in³/rev)
+                                        </label><br>
+                                        <input id="total" name="total" size="8" maxlength="5" type="text" /><br><br>
+                                        <label for="total2" size="2">(cm³/rev)</label><br>
+                                        <input total="2" name="total2" size="8" maxlength="5"
+                                            type="text" /><br><br><br><br>
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" align="center"><br><img src="./DispCalc.jpg" alt="no image"><br><br>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </form>
+        </section>
+    </main>
+    <footer></footer>
+    <script>
+        function calc() {
+            const w = document.form1.w.value;
+            const l = document.form1.l.value;
+            const d = document.form1.d.value;
+
+            a = 6 * w * ((2 * d) - l) * ((l - d) / 2);
+            b = (6 * w * ((2 * d) - l) * ((l - d) / 2)) * 16.38706;
+            t = a.toFixed(4);
+            t2 = b.toFixed(4)
+
+            document.form1.total.value = t
+            document.form1.total2.value = t2
+        }
+    </script>
+</body>
+
+</html>
