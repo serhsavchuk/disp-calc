@@ -1,3 +1,3 @@
 # Displacement Calculator
 
-Public page: [Worktime](https://serhsavchuk.github.io/disp-calc/)
+Public page: [Displacement Calculator](https://serhsavchuk.github.io/disp-calc/)
